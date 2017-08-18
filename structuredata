@@ -1,0 +1,34 @@
+
++++create table InputText
+(   Id int not null,
+    Sample varchar(1000) not null,
+    primary key (Id)
+);
+
++++ create table UserState(
+    FbId varchar(100) not null,
+    Area varchar(20) not null  default "empty",
+    Province varchar(20) default "empty" ,
+    Name varchar(100) default "empty",
+    Age varchar(20) default "99",
+    Gender varchar(10) not null default "male" ,
+    NumberPhone varchar(20) default "empty",
+    State BOOLEAN default false,
+    Inning int not null default 1,LastSample int not null,
+    LastTime timestamp not null default current_timestamp,
+    primary key (FbId),
+    constraint FK_userstate_lastsample foreign key (LastSample) references InputText(Id)
+);
+
+
++++ CREATE TABLE Outputs(Id int not null AUTO_INCREMENT,
+    FbId varchar(100) not null ,
+    Gender varchar(10) not null default "Male",
+    SampleId int not null,
+    State BOOLEAN not null default false,
+    Inning int not null default 1,
+    UrlRecord varchar(1000) not null,
+    RecordTime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (Id),CONSTRAINT FK_Outputs_FbId FOREIGN KEY (FbId) REFERENCES UserState(FbId),
+    CONSTRAINT FK_Outputs_SampleId FOREIGN KEY (SampleId) REFERENCES InputText(Id)
+);

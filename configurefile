@@ -1,0 +1,7 @@
+export DB_PASS="1"
+export DB_USER="root"
+export DB_DATANAME="recordchatbotB"
+
+export CONFIGURE_POSITIONOFDATA="/home/tiennv000"
+export CONFIGURE_NAMEDIRECTORY="RECORDCHATBOTB"
+export CONFIGURE_ID=0
